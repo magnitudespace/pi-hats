@@ -407,9 +407,6 @@ int mcp25xxfd_can_tx_handle_int_tefif(struct mcp25xxfd_can_priv *cpriv)
 
 	MCP25XXFD_DEBUGFS_STATS_INCR(cpriv, int_tef_count);
 
-	/* otherwise play it safe */
-	netdev_warn(cpriv->can.dev,
-		    "Something is wrong - we got a TEF interrupt but we were not able to detect a finished fifo\n");
 	return mcp25xxfd_can_tx_handle_int_tefif_conservative(cpriv);
 }
 
